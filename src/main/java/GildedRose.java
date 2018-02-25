@@ -34,6 +34,8 @@ public class GildedRose {
 
     public static void updateQuality() {
         for (Item item : items) {
+            ItemType itemType;
+            itemType = ItemType.determineItemType();
             updateItem(item);
         }
     }
