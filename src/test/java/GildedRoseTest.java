@@ -1,12 +1,73 @@
-import static org.junit.Assert.*;
-
+import org.junit.Before;
 import org.junit.Test;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import static org.junit.Assert.assertTrue;
 
 public class GildedRoseTest {
 
-	@Test
-	public void testTheTruth() {
-		assertTrue(true);
-	}
+    @Before
+    public void setUp() {
+
+        List<Item> items = new ArrayList<Item>();
+        items.add(new Item("+5 Dexterity Vest", 10, 20));
+        items.add(new Item("Aged Brie", 2, 0));
+        items.add(new Item("Elixir of the Mongoose", 5, 7));
+        items.add(new Item("Sulfuras, Hand of Ragnaros", 0, 80));
+        items.add(new Item("Backstage passes to a TAFKAL80ETC concert", 15, 20));
+        items.add(new Item("Conjured Mana Cake", 3, 6));
+
+        GildedRose.setItems(items);
+    }
+
+
+    @Test
+    public void testUpdateSellinNormalItem() {
+        GildedRose.updateQuality();
+        assertTrue(GildedRose.getItems().get(0).getSellIn() == 9);
+    }
+
+    @Test
+    public void testUpdateQualityNormalItem() {
+        GildedRose.updateQuality();
+        assertTrue(GildedRose.getItems().get(0).getQuality() == 19);
+    }
+
+    @Test
+    public void testUpdateSellinCheeseItem() {
+        GildedRose.updateQuality();
+        assertTrue(GildedRose.getItems().get(1).getSellIn() == 1);
+    }
+
+    @Test
+    public void testUpdateQualityCheeseItem() {
+        GildedRose.updateQuality();
+        assertTrue(GildedRose.getItems().get(1).getQuality() == 1);
+    }
+
+    @Test
+    public void testUpdateSellinSulfuraItem() {
+        GildedRose.updateQuality();
+        assertTrue(GildedRose.getItems().get(3).getSellIn() == 0);
+    }
+
+    @Test
+    public void testUpdateQualitySulfuraItem() {
+        GildedRose.updateQuality();
+        assertTrue(GildedRose.getItems().get(3).getQuality() == 80);
+    }
+
+    @Test
+    public void testUpdateSellinBackStageItem() {
+        GildedRose.updateQuality();
+        assertTrue(GildedRose.getItems().get(4).getSellIn() == 14);
+    }
+
+    @Test
+    public void testUpdateQualityBackStageItem() {
+        GildedRose.updateQuality();
+        assertTrue(GildedRose.getItems().get(4).getQuality() == 21);
+    }
 }

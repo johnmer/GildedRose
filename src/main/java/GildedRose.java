@@ -4,7 +4,15 @@ import java.util.List;
 
 public class GildedRose {
 
-	private static List<Item> items = null;
+    private static List<Item> items = null;
+
+    public static List<Item> getItems() {
+        return items;
+    }
+
+    public static void setItems(List<Item> items) {
+        GildedRose.items = items;
+    }
 
 	/**
 	 * @param args
