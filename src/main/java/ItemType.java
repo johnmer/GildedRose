@@ -25,9 +25,6 @@ public class ItemType {
         } else {
             reduceQuality(item);
 
-            if ("Conjured Mana Cake".equals(item.getName())) {
-                reduceQuality(item);
-            }
         }
     }
 
@@ -58,9 +55,6 @@ public class ItemType {
 
                 reduceQuality(item);
 
-                if ("Conjured Mana Cake".equals(item.getName())) {
-                    reduceQuality(item);
-                }
             }
         }
     }
