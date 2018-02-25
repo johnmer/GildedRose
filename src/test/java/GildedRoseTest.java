@@ -19,6 +19,7 @@ public class GildedRoseTest {
         items.add(new Item("Backstage passes to a TAFKAL80ETC concert", 15, 20));
         items.add(new Item("Backstage passes to a TAFKAL80ETC concert", 3, 20));
         items.add(new Item("Conjured Mana Cake", 3, 6));
+        items.add(new Item("Conjured Mana Cake", 0, 6));
 
         GildedRose.setItems(items);
     }
@@ -94,5 +95,17 @@ public class GildedRoseTest {
     public void testUpdateQualityConjurItem() {
         GildedRose.updateQuality();
         assertTrue(GildedRose.getItems().get(6).getQuality() == 4);
+    }
+
+    @Test
+    public void testUpdateSellinExpiredConjurItem() {
+        GildedRose.updateQuality();
+        assertTrue(GildedRose.getItems().get(7).getSellIn() == -1);
+    }
+
+    @Test
+    public void testUpdateQualityExpiredConjurItem() {
+        GildedRose.updateQuality();
+        assertTrue(GildedRose.getItems().get(7).getQuality() == 2);
     }
 }
