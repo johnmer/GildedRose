@@ -83,4 +83,16 @@ public class GildedRoseTest {
         GildedRose.updateQuality();
         assertTrue(GildedRose.getItems().get(5).getQuality() == 23);
     }
+
+    @Test
+    public void testUpdateSellinConjurItem() {
+        GildedRose.updateQuality();
+        assertTrue(GildedRose.getItems().get(6).getSellIn() == 2);
+    }
+
+    @Test
+    public void testUpdateQualityConjurItem() {
+        GildedRose.updateQuality();
+        assertTrue(GildedRose.getItems().get(6).getQuality() == 4);
+    }
 }
