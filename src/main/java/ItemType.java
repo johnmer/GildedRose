@@ -23,7 +23,6 @@ public class ItemType {
         reduceQuality(item);
     }
 
-
     protected void updateItemSellin(Item item) {
         item.setSellIn(item.getSellIn() - 1);
     }
