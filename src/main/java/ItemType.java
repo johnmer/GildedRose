@@ -20,7 +20,7 @@ public class ItemType {
     }
 
     protected void updateItemQuality(Item item) {
-        if (("Aged Brie".equals(item.getName())) || "Backstage passes to a TAFKAL80ETC concert".equals(item.getName())) {
+        if ("Backstage passes to a TAFKAL80ETC concert".equals(item.getName())) {
             updateSpecialItems(item);
         } else {
             reduceQuality(item);
@@ -46,9 +46,7 @@ public class ItemType {
     }
 
     protected void updateExpiredItem(Item item) {
-        if ("Aged Brie".equals(item.getName())) {
-            increaseQuality(item);
-        } else {
+
             if ("Backstage passes to a TAFKAL80ETC concert".equals(item.getName())) {
                 item.setQuality(0);
             } else {
@@ -56,7 +54,7 @@ public class ItemType {
                 reduceQuality(item);
 
             }
-        }
+
     }
 
     public void increaseQuality(Item item) {
