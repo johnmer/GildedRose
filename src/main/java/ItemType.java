@@ -20,41 +20,16 @@ public class ItemType {
     }
 
     protected void updateItemQuality(Item item) {
-        if ("Backstage passes to a TAFKAL80ETC concert".equals(item.getName())) {
-            updateSpecialItems(item);
-        } else {
-            reduceQuality(item);
-
-        }
+        reduceQuality(item);
     }
 
-    protected void updateSpecialItems(Item item) {
-        increaseQuality(item);
-        if ("Backstage passes to a TAFKAL80ETC concert".equals(item.getName())) {
-            if (item.getSellIn() <= 10) {
-                increaseQuality(item);
-            }
-            if (item.getSellIn() <= 5) {
-                increaseQuality(item);
-            }
-        }
-    }
 
     protected void updateItemSellin(Item item) {
         item.setSellIn(item.getSellIn() - 1);
-
     }
 
     protected void updateExpiredItem(Item item) {
-
-            if ("Backstage passes to a TAFKAL80ETC concert".equals(item.getName())) {
-                item.setQuality(0);
-            } else {
-
-                reduceQuality(item);
-
-            }
-
+        reduceQuality(item);
     }
 
     public void increaseQuality(Item item) {
