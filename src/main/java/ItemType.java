@@ -1,12 +1,12 @@
 public class ItemType {
     public static ItemType determineItemType(Item item) {
-        if (item.getName() == "Sulfuras, Hand of Ragnaros")
+        if (item.getName().equals("Sulfuras, Hand of Ragnaros"))
             return new SulfuraItemType();
-        if (item.getName() == "Aged Brie")
+        if (item.getName().equals("Aged Brie"))
             return new BrieItemType();
-        if (item.getName() == "Backstage passes to a TAFKAL80ETC concert")
+        if (item.getName().equals("Backstage passes to a TAFKAL80ETC concert"))
             return new BackStageItemType();
-        if (item.getName() == "Conjured Mana Cake")
+        if (item.getName().equals("Conjured Mana Cake"))
             return new ConjurItemType();
         return new StandardItemType();
     }
@@ -23,9 +23,8 @@ public class ItemType {
         if (("Aged Brie".equals(item.getName())) || "Backstage passes to a TAFKAL80ETC concert".equals(item.getName())) {
             updateSpecialItems(item);
         } else {
-            if (!"Sulfuras, Hand of Ragnaros".equals(item.getName())) {
-                reduceQuality(item);
-            }
+            reduceQuality(item);
+
             if ("Conjured Mana Cake".equals(item.getName())) {
                 reduceQuality(item);
             }
@@ -45,9 +44,8 @@ public class ItemType {
     }
 
     protected void updateItemSellin(Item item) {
-        if (!"Sulfuras, Hand of Ragnaros".equals(item.getName())) {
-            item.setSellIn(item.getSellIn() - 1);
-        }
+        item.setSellIn(item.getSellIn() - 1);
+
     }
 
     protected void updateExpiredItem(Item item) {
@@ -57,9 +55,9 @@ public class ItemType {
             if ("Backstage passes to a TAFKAL80ETC concert".equals(item.getName())) {
                 item.setQuality(0);
             } else {
-                if (!"Sulfuras, Hand of Ragnaros".equals(item.getName())) {
-                    reduceQuality(item);
-                }
+
+                reduceQuality(item);
+
                 if ("Conjured Mana Cake".equals(item.getName())) {
                     reduceQuality(item);
                 }
