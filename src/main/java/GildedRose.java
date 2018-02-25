@@ -53,6 +53,9 @@ public class GildedRose {
             if (!"Sulfuras, Hand of Ragnaros".equals(item.getName())) {
                 reduceQuality(item);
             }
+            if ("Conjured Mana Cake".equals(item.getName())) {
+                reduceQuality(item);
+            }
         }
     }
 
