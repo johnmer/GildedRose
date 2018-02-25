@@ -36,75 +36,8 @@ public class GildedRose {
         for (Item item : items) {
             ItemType itemType;
             itemType = ItemType.determineItemType(item);
-            updateItem(item);
+            itemType.updateItem(item);
         }
     }
 
-    private static void updateItem(Item item) {
-        updateItemQuality(item);
-        updateItemSellin(item);
-        if (item.getSellIn() < 0) {
-            updateExpiredItem(item);
-        }
-    }
-
-    private static void updateItemQuality(Item item) {
-        if (("Aged Brie".equals(item.getName())) || "Backstage passes to a TAFKAL80ETC concert".equals(item.getName())) {
-            updateSpecialItems(item);
-        } else {
-            if (!"Sulfuras, Hand of Ragnaros".equals(item.getName())) {
-                reduceQuality(item);
-            }
-            if ("Conjured Mana Cake".equals(item.getName())) {
-                reduceQuality(item);
-            }
-        }
-    }
-
-    private static void updateSpecialItems(Item item) {
-        increaseQuality(item);
-        if ("Backstage passes to a TAFKAL80ETC concert".equals(item.getName())) {
-            if (item.getSellIn() <= 10) {
-                increaseQuality(item);
-            }
-            if (item.getSellIn() <= 5) {
-                increaseQuality(item);
-            }
-        }
-    }
-
-    private static void updateItemSellin(Item item) {
-        if (!"Sulfuras, Hand of Ragnaros".equals(item.getName())) {
-            item.setSellIn(item.getSellIn() - 1);
-        }
-    }
-
-    private static void updateExpiredItem(Item item) {
-        if ("Aged Brie".equals(item.getName())) {
-            increaseQuality(item);
-        } else {
-            if ("Backstage passes to a TAFKAL80ETC concert".equals(item.getName())) {
-                item.setQuality(0);
-            } else {
-                if (!"Sulfuras, Hand of Ragnaros".equals(item.getName())) {
-                    reduceQuality(item);
-                }
-                if ("Conjured Mana Cake".equals(item.getName())) {
-                    reduceQuality(item);
-                }
-            }
-        }
-    }
-
-    private static void increaseQuality(Item item) {
-        if (item.getQuality() < 50) {
-            item.setQuality(item.getQuality() + 1);
-        }
-    }
-
-    private static void reduceQuality(Item item) {
-        if (item.getQuality() > 0) {
-            item.setQuality(item.getQuality() - 1);
-        }
-    }
 }
