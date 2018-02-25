@@ -32,7 +32,6 @@ public class GildedRose {
         updateQuality();
     }
 
-
     public static void updateQuality() {
         for (Item item : items) {
             updateItem(item);
@@ -50,18 +49,16 @@ public class GildedRose {
     }
 
     private static void updateExpiredItem(Item item) {
-        if (!"Aged Brie".equals(item.getName())) {
-            if (!"Backstage passes to a TAFKAL80ETC concert".equals(item.getName())) {
-                if (item.getQuality() > 0) {
-                    if (!"Sulfuras, Hand of Ragnaros".equals(item.getName())) {
-                        item.setQuality(item.getQuality() - 1);
-                    }
-                }
-            } else {
-                item.setQuality(0);
-            }
-        } else {
+        if ("Aged Brie".equals(item.getName())) {
             increaseQuality(item);
+        } else {
+            if ("Backstage passes to a TAFKAL80ETC concert".equals(item.getName())) {
+                item.setQuality(0);
+            } else {
+                if (!"Sulfuras, Hand of Ragnaros".equals(item.getName())) {
+                    reduceQuality(item);
+                }
+            }
         }
     }
 
@@ -101,4 +98,9 @@ public class GildedRose {
         }
     }
 
+    private static void reduceQuality(Item item) {
+        if (item.getQuality() > 0) {
+            item.setQuality(item.getQuality() - 1);
+        }
+    }
 }
