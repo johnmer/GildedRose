@@ -17,6 +17,7 @@ public class GildedRoseTest {
         items.add(new Item("Elixir of the Mongoose", 5, 7));
         items.add(new Item("Sulfuras, Hand of Ragnaros", 0, 80));
         items.add(new Item("Backstage passes to a TAFKAL80ETC concert", 15, 20));
+        items.add(new Item("Backstage passes to a TAFKAL80ETC concert", 3, 20));
         items.add(new Item("Conjured Mana Cake", 3, 6));
 
         GildedRose.setItems(items);
@@ -69,5 +70,17 @@ public class GildedRoseTest {
     public void testUpdateQualityBackStageItem() {
         GildedRose.updateQuality();
         assertTrue(GildedRose.getItems().get(4).getQuality() == 21);
+    }
+
+    @Test
+    public void testUpdateSellinBackStage3DayItem() {
+        GildedRose.updateQuality();
+        assertTrue(GildedRose.getItems().get(5).getSellIn() == 2);
+    }
+
+    @Test
+    public void testUpdateQualityBackStage3DayItem() {
+        GildedRose.updateQuality();
+        assertTrue(GildedRose.getItems().get(5).getQuality() == 23);
     }
 }
